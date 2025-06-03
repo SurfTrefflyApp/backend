@@ -16,6 +16,8 @@ import (
 	"treffly/apperror"
 )
 
+//go:generate mockgen -destination=./mock/service.go -package=mock . crudService,ImageService
+
 type crudService interface {
 	Create(ctx context.Context, params models.CreateParams) (models.Event, error)
 	List(ctx context.Context, params models.ListParams) ([]models.Event, error)
