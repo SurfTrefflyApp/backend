@@ -304,7 +304,7 @@ WHERE
 ORDER BY
     ST_Distance(geom, ST_MakePoint($1::numeric, $2::numeric)::GEOGRAPHY) ASC,
     created_at DESC
-    LIMIT 6
+    LIMIT 9
 `
 
 type GetGuestRecommendedEventsParams struct {
@@ -392,7 +392,7 @@ SELECT
 FROM event_with_tags_view
 WHERE date > NOW() AND is_private = false
 ORDER BY created_at DESC
-    LIMIT 6
+    LIMIT 9
 `
 
 type GetLatestEventsRow struct {
@@ -645,7 +645,7 @@ SELECT
 FROM event_with_tags_view
 WHERE date > NOW() AND is_private = false
 ORDER BY participants_count DESC, created_at DESC
-    LIMIT 6
+    LIMIT 9
 `
 
 type GetPopularEventsRow struct {
@@ -729,7 +729,7 @@ FROM event_with_tags_view
 WHERE is_premium = TRUE
   AND date > NOW() AND is_private = false
 ORDER BY created_at DESC
-    LIMIT 6
+    LIMIT 9
 `
 
 type GetPremiumEventsRow struct {
@@ -945,7 +945,7 @@ ORDER BY
     matched_tags DESC,
     created_at DESC,
     distance ASC
-    LIMIT 6
+    LIMIT 9
 `
 
 type GetUserRecommendedEventsParams struct {

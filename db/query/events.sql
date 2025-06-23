@@ -188,7 +188,7 @@ FROM event_with_tags_view
 WHERE is_premium = TRUE
   AND date > NOW() AND is_private = false
 ORDER BY created_at DESC
-    LIMIT 6;
+    LIMIT 9;
 
 -- name: GetLatestEvents :many
 SELECT
@@ -212,7 +212,7 @@ SELECT
 FROM event_with_tags_view
 WHERE date > NOW() AND is_private = false
 ORDER BY created_at DESC
-    LIMIT 6;
+    LIMIT 9;
 
 -- name: GetPopularEvents :many
 SELECT
@@ -236,7 +236,7 @@ SELECT
 FROM event_with_tags_view
 WHERE date > NOW() AND is_private = false
 ORDER BY participants_count DESC, created_at DESC
-    LIMIT 6;
+    LIMIT 9;
 
 -- name: GetUserRecommendedEvents :many
 WITH user_tags AS (
@@ -287,7 +287,7 @@ ORDER BY
     matched_tags DESC,
     created_at DESC,
     distance ASC
-    LIMIT 6;
+    LIMIT 9;
 
 -- name: GetGuestRecommendedEvents :many
 SELECT
@@ -320,7 +320,7 @@ WHERE
 ORDER BY
     ST_Distance(geom, ST_MakePoint(@user_lon::numeric, @user_lat::numeric)::GEOGRAPHY) ASC,
     created_at DESC
-    LIMIT 6;
+    LIMIT 9;
 
 -- name: GetPastUserEvents :many
 SELECT

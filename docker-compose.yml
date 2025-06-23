@@ -25,7 +25,7 @@ services:
       - app-network
 
   backend:
-    image: m1ll3r1337/treffly-server:latest
+    build: .
     expose:
       - "8080"
     env_file: app.env
@@ -36,7 +36,7 @@ services:
     networks:
       - app-network
     volumes:
-      - /treffly/images:/app/images
+      - ./images:/app/images
 
   redis:
     image: redis:alpine
