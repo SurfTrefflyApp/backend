@@ -36,7 +36,6 @@ func (c *EventConverter) ToEventResponse(e models.Event) EventResponse {
 		Tags:             c.convertTagsToResponse(e.Tags),
 		ParticipantCount: e.ParticipantCount,
 		ImageEventURL:    common.ImageURL(c.env, c.domain, e.ImagePath),
-		ImageUserURL:     common.ImageURL(c.env, c.domain, e.OwnerImagePath),
 	}
 }
 
